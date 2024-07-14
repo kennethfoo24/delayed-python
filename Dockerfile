@@ -27,5 +27,8 @@ ENV DD_LOGS_INJECTION=true
 # Copy application code
 COPY . .
 
+# Expose the application port
+EXPOSE 5000
+
 # Run the web service on container startup
 CMD [ "python", "app.py" ]

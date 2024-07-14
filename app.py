@@ -19,7 +19,7 @@ app = Flask(__name__)
 def recursive_function(count):
     if count <= 0:
         return "Thanos: You should have gone for the head !"
-    time.sleep(0.2)  # Simulate some processing time
+    time.sleep(0.1)  # Simulate some processing time
     return recursive_function(count - 1)
 
 @app.route('/delayed-response', methods=['GET'])

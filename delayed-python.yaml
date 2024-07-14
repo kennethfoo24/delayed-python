@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: avengers-delayed-python
+    tags.datadoghq.com/env: avengers-app
+    tags.datadoghq.com/service: avengers-delayed-python
+    tags.datadoghq.com/version: phase5
+  name: avengers-delayed-python
+  namespace: marvel-python-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: avengers-delayed-python
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: avengers-delayed-python
+        tags.datadoghq.com/env: avengers-app
+        tags.datadoghq.com/service: avengers-delayed-python
+        tags.datadoghq.com/version: phase5
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/python-lib.version: v2.9.2
+    spec:
+      containers:
+      - image: kennethfoo24/delayed-python:03d4f438a2af8cd7c9951a0c79bf2b4929f6517e
+        env:
+            - name: DD_PROFILING_ENABLED
+              value: "true"
+            - name: DD_LOGS_INJECTION
+              value: "true"
+            - name: DD_APPSEC_SCA_ENABLED
+              value: "true"
+            - name: DD_TRACE_SAMPLE_RATE
+              value: "1"
+            - name: DD_RUNTIME_METRICS_ENABLED
+              value: "true"
+        name: delayed-python
+        ports:
+        - containerPort: 5000
+        resources: {}
+status: {}

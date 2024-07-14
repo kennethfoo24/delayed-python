@@ -1,6 +1,11 @@
 from flask import Flask, request, jsonify, logging
+# from ddtrace import tracer, patch; patch(logging=True)
+from flask_cors import CORS
+import requests as req
 import time
 import logging
+import sys
+import uuid
 
 FORMAT = ('%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] '
           '[dd.service=%(dd.service)s dd.env=%(dd.env)s dd.trace_id=%(dd.trace_id)s dd.span_id=%(dd.span_id)s] '

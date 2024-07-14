@@ -23,6 +23,8 @@ ENV DD_APPSEC_RULES=/home/asm/appsec-rules.json
 ENV DD_TRACE_DEBUG=true
 ENV DD_LOG_LEVEL=debug
 ENV DD_LOGS_INJECTION=true
+ENV DD_PROFILING_ENABLED=true
+ENV DD_APPSEC_SCA_ENABLED=true
 
 # Copy application code
 COPY . .

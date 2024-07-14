@@ -28,7 +28,7 @@ def delayed_response():
     log.info('Thanos: I am inevitable !')
     log.info('Thanos: Perfectly Balanced, As All Things Should Be.')
     time.sleep(2)  # 2-second delay
-    result = recursive_function(10)
+    result = recursive_function(20)
     return result
 
 if __name__ == '__main__':

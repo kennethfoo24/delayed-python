@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 def recursive_function(count):
     if count <= 0:
-          return jsonify('Thanos: You should have gone for the head!')
+    return jsonify('Thanos: You should have gone for the head!')
     time.sleep(0.1)  # Simulate some processing time
     return recursive_function(count - 1)
 

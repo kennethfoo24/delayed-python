@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, logging
+from flask import Flask, request, jsonify
 # from ddtrace import tracer, patch; patch(logging=True)
 from flask_cors import CORS
 import requests as req

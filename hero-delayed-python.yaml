@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hero-delayed-python
+    tags.datadoghq.com/env: hero-app
+    tags.datadoghq.com/service: hero-delayed-python
+    tags.datadoghq.com/version: phase5
+  name: hero-delayed-python
+  namespace: hero
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hero-delayed-python
+  template:
+    metadata:
+      annotations:
+        admission.datadoghq.com/python-lib.version: v2.9.2
+      creationTimestamp: null
+      labels:
+        admission.datadoghq.com/enabled: "true"
+        app: hero-delayed-python
+        tags.datadoghq.com/env: avengers-app
+        tags.datadoghq.com/service: hero-delayed-python
+        tags.datadoghq.com/version: phase5
+    spec:
+      containers:
+      - env:
+        - name: DD_PROFILING_ENABLED
+          value: "true"
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_APPSEC_SCA_ENABLED
+          value: "true"
+        - name: DD_TRACE_SAMPLE_RATE
+          value: "1"
+        - name: DD_RUNTIME_METRICS_ENABLED
+          value: "true"
+        image: kennethfoo24/delayed-python:0aa6e3ce47c1d938b7bd0733890b2ff194651dbf
+        imagePullPolicy: IfNotPresent
+        name: delayed-python
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

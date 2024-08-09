@@ -26,7 +26,7 @@ spec:
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
-      - image: kennethfoo24/delayed-python:03d4f438a2af8cd7c9951a0c79bf2b4929f6517e
+      - image: kennethfoo24/delayed-python:18f8186dd736f2da513fab28cdd61be632d536a5
         env:
             - name: DD_PROFILING_ENABLED
               value: "true"

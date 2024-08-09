@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # Install dependencies
 COPY requirements.txt ./
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --upgrade pip
+RUN pip3 install ddtrace
+
 
 # Set environment variables
 ENV FLASK_APP=app.py
@@ -33,4 +36,4 @@ COPY . .
 EXPOSE 5000
 
 # Run the web service on container startup
-CMD [ "ddtrace-run", "python", "app.py" ]
+CMD ["ddtrace-run", "python", "app.py"]

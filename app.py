@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, logging
-from ddtrace import tracer, patch; patch(logging=True)
+# from ddtrace import tracer, patch; patch(logging=True)
 from flask_cors import CORS
 import requests as req
 import time

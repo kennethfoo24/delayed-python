@@ -24,8 +24,6 @@ spec:
         tags.datadoghq.com/service: avengers-delayed-python
         tags.datadoghq.com/version: phase5
         admission.datadoghq.com/enabled: "true"
-      annotations:
-        admission.datadoghq.com/python-lib.version: v2.9.2
     spec:
       containers:
       - image: kennethfoo24/delayed-python:03d4f438a2af8cd7c9951a0c79bf2b4929f6517e

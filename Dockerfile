@@ -24,6 +24,7 @@ ENV DD_LOG_LEVEL=debug
 ENV DD_LOGS_INJECTION=true
 ENV DD_PROFILING_ENABLED=true
 ENV DD_APPSEC_SCA_ENABLED=true
+ENV DD_IAST_ENABLED=true
 
 # Copy application code
 COPY . .
@@ -32,4 +33,4 @@ COPY . .
 EXPOSE 5000
 
 # Run the web service on container startup
-CMD [ "python", "app.py" ]
+CMD [ "ddtrace-run", "python", "app.py" ]

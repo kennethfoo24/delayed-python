@@ -12,6 +12,8 @@ RUN pip3 install ddtrace
 
 
 # Set environment variables
+ARG DD_GIT_COMMIT_SHA
+ENV DD_TAGS="git.repository_url:github.com/kennethfoo24/delayed-python,git.commit.sha:${DD_GIT_COMMIT_SHA}"
 ENV FLASK_APP=app.py
 ENV DD_SERVICE=avengers-delayed-python
 ENV DD_ENV=avengers-app
@@ -28,6 +30,8 @@ ENV DD_LOGS_INJECTION=true
 ENV DD_PROFILING_ENABLED=true
 ENV DD_APPSEC_SCA_ENABLED=true
 ENV DD_IAST_ENABLED=true
+ENV DD_RUNTIME_METRICS_ENABLED=true
+ENV DD_TRACE_STARTUP_LOGS=true
 
 # Copy application code
 COPY . .

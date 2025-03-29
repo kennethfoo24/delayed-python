@@ -8,7 +8,7 @@ metadata:
     tags.datadoghq.com/service: avengers-delayed-python
     tags.datadoghq.com/version: phase5
   name: avengers-delayed-python
-  namespace: marvel-python-backend
+  namespace: marvel
 spec:
   replicas: 1
   selector:
@@ -17,7 +17,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: avengers-delayed-python
         tags.datadoghq.com/env: avengers-app
@@ -26,7 +25,7 @@ spec:
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
-      - image: kennethfoo24/delayed-python:18f8186dd736f2da513fab28cdd61be632d536a5
+      - image: kennethfoo24/delayed-python:1213245184477fcbd978561b2c66344e5d013b9d
         env:
             - name: DD_PROFILING_ENABLED
               value: "true"

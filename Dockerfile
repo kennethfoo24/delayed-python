@@ -12,13 +12,16 @@ RUN pip3 install ddtrace
 
 
 # Set environment variables
+ARG DD_GIT_REPOSITORY_URL
 ARG DD_GIT_COMMIT_SHA
+ENV DD_GIT_REPOSITORY_URL=${DD_GIT_REPOSITORY_URL} 
+ENV DD_GIT_COMMIT_SHA=${DD_GIT_COMMIT_SHA}
 ENV DD_TAGS="git.repository_url:github.com/kennethfoo24/delayed-python,git.commit.sha:${DD_GIT_COMMIT_SHA}"
 ENV FLASK_APP=app.py
 ENV DD_SERVICE=avengers-delayed-python
 ENV DD_ENV=avengers-app
 ENV DD_APPSEC_ENABLED=1
-ENV DD_VERSION="phase5"
+ENV DD_VERSION="phase6"
 ENV DD_TRACE_SAMPLE_RATE=1
 ENV DD_TRACE_RATE_LIMIT=1000
 ENV DD_REMOTE_CONFIGURATION_ENABLED=true
